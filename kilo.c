@@ -15,6 +15,7 @@
 #include "init_Editor.h"
 #include "append_Buffer_Struct.h"
 #include "ab_Append.h"
+#include "enum_Editor_Key.h"
 
 struct editorConfig E;
 

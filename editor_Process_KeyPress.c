@@ -5,10 +5,12 @@
 #include <termios.h>
 #include <unistd.h>
 #include "editor_Read_Key.h"
+#include "editor_Move_cursor.h"
+#include "enum_Editor_Key.h"
 
 void editorProcessKeyPress()
 {
-  char c = editorReadKey();
+  int c = editorReadKey();
 
   switch (c)
   {
@@ -21,6 +23,13 @@ void editorProcessKeyPress()
                                        // (cursor position ) to position the cursor.
 
     exit(0);
+    break;
+
+  case ARROW_UP:
+  case ARROW_DOWN:
+  case ARROW_LEFT:
+  case ARROW_RIGHT:
+    editorMoveCursor(c);
     break;
   }
 }

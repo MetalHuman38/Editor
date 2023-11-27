@@ -15,6 +15,8 @@
     "get_Cursor_Position.h": "c",
     "append_Buffer_Struct.h": "c",
     "ab_Append.h": "c",
-    "ab_Append_Free.h": "c"
+    "ab_Append_Free.h": "c",
+    "editor_Move_Cursor.h": "c",
+    "enum_Editor_Key.h": "c"
   }
 }
