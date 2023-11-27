@@ -10,6 +10,7 @@
     "unistd.h": "c",
     "editor_Draw_Rows.h": "c",
     "editorConfig.h": "c",
-    "get_Windows_Size.h": "c"
+    "get_Windows_Size.h": "c",
+    "init_Editor.h": "c"
   }
 }

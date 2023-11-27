@@ -12,12 +12,14 @@
 #include "editor_Refresh_Screen.h"
 #include "editorConfig.h"
 #include "get_Windows_Size.h"
+#include "init_Editor.h"
 
 struct editorConfig E;
 
 int main()
 {
   enableRawMode();
+  initEditor();
 
   // Prints out each bytes read into the console.
   while (1) // Program exit when q is included after every character.
