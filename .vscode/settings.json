@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+    "enable_raw_mode.h": "c",
+    "disable_raw_mode.h": "c",
+    "termios_setup.h": "c",
+    "die.h": "c",
+    "editor_Read_Key.h": "c",
+    "editor_Process_KeyPress.h": "c",
+    "editor_Refresh_Screen.h": "c",
+    "unistd.h": "c",
+    "editor_Draw_Rows.h": "c",
+    "editorConfig.h": "c",
+    "get_Windows_Size.h": "c"
+  }
+}
