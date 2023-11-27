@@ -3,13 +3,22 @@
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
+#include "editorConfig.h"
+// Include your custom header files.
+#include "append_Buffer_Struct.h"
+#include "ab_Append.h"
 
-void editorDrawRows()
+void editorDrawRows(struct appendBuffer *ab)
 {
 
   int y;
-  for (y = 0; y < 24; y++)
+  for (y = 0; y < E.screen_rows; y++)
   {
-    write(STDOUT_FILENO, "\r\n", 3);
+    abAppend(ab, "~", 1);
+
+    if (y < E.screen_rows - 1)
+    {
+      abAppend(ab, "\r\n", 2);
+    }
   }
 }

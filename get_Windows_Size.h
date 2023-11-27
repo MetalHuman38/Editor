@@ -2,6 +2,6 @@
 #define GET_WINDOW_SIZE_H
 
 //
-int getWindowSize(int *cols, int *rows);
+int getWindowSize(int *rows, int *cols);
 
 #endif

@@ -24,9 +24,9 @@ void enableRawMode()
                                                             // transmitting(pause) and Q resumes
                                                             // process. turned off, S can read as 19 byte and Q as 17 byte. M can read as 13bytes. (BRKINT triggers SIGINT), (INPCK enables parity checking.), (ISTRIP strips 8th bit of each input.)
 
-  raw.c_iflag &= ~(CS8); // (CS8 sets character size to 8bits per byte.)
+  raw.c_oflag &= ~(OPOST); // Added parameter (OPOST flag) Turns off outputting process features. ("\r\n")
 
-  raw.c_iflag &= ~(OPOST); // Added parameter (OPOST flag) Turns off outputting process features. ("\r\n")
+  raw.c_cflag &= ~(CS8); // (CS8 sets character size to 8bits per byte.)
 
   raw.c_lflag &= ~(ECHO | ICANON | IEXTEN | ISIG); //  This is for local flags. <termios.h> refer to it as
                                                    //("dumping ground for other state")ECHO is a bit flag as 0000..1000 in binary

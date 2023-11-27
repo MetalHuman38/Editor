@@ -13,8 +13,12 @@
 #include "editorConfig.h"
 #include "get_Windows_Size.h"
 #include "init_Editor.h"
+#include "append_Buffer_Struct.h"
+#include "ab_Append.h"
 
 struct editorConfig E;
+
+struct appendBugger;
 
 int main()
 {

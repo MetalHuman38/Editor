@@ -11,6 +11,10 @@
     "editor_Draw_Rows.h": "c",
     "editorConfig.h": "c",
     "get_Windows_Size.h": "c",
-    "init_Editor.h": "c"
+    "init_Editor.h": "c",
+    "get_Cursor_Position.h": "c",
+    "append_Buffer_Struct.h": "c",
+    "ab_Append.h": "c",
+    "ab_Append_Free.h": "c"
   }
 }
