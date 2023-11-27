@@ -7,6 +7,7 @@
 #include "editor_Read_Key.h"
 #include "editor_Move_cursor.h"
 #include "enum_Editor_Key.h"
+#include "editorConfig.h"
 
 void editorProcessKeyPress()
 {
@@ -24,6 +25,23 @@ void editorProcessKeyPress()
 
     exit(0);
     break;
+
+  case HOME_KEY:
+    E.cursor_x = 0;
+    break;
+
+  case END_KEY:
+    E.cursor_x = E.screen_cols - 1;
+    break;
+
+  case PAGE_UP:
+  case PAGE_DOWN:
+  {
+    int times = E.screen_rows;
+    while (times--)
+      editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
+  }
+  break;
 
   case ARROW_UP:
   case ARROW_DOWN:

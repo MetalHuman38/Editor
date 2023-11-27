@@ -17,6 +17,8 @@
     "ab_Append.h": "c",
     "ab_Append_Free.h": "c",
     "editor_Move_Cursor.h": "c",
-    "enum_Editor_Key.h": "c"
+    "enum_Editor_Key.h": "c",
+    "editor_Open.h": "c",
+    "ctype.h": "c"
   }
 }

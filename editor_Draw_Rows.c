@@ -15,27 +15,37 @@ void editorDrawRows(struct appendBuffer *ab)
   int y;
   for (y = 0; y < E.screen_rows; y++)
   {
-    if (y == E.screen_rows / 3)
+    if (y >= E.num_rows)
     {
-      char welcome[80];
-      int welcome_len = snprintf(welcome, sizeof(welcome), "Kilo Editor -- version %s", KILO_VERSION);
-      if (welcome_len > E.screen_cols)
-        welcome_len = E.screen_cols;
-      int padding = (E.screen_cols - welcome_len / 2);
-      if (padding)
+
+      if (E.num_rows == 0 && y == E.screen_rows / 3)
+      {
+        char welcome[80];
+        int welcome_len = snprintf(welcome, sizeof(welcome), "Kilo Editor -- version %s", KILO_VERSION);
+        if (welcome_len > E.screen_cols)
+          welcome_len = E.screen_cols;
+        int padding = (E.screen_cols - welcome_len / 2);
+        if (padding)
+        {
+          abAppend(ab, "~", 1);
+          padding--;
+        }
+        while (padding--)
+          abAppend(ab, " ", 1);
+        abAppend(ab, welcome, welcome_len);
+      }
+      else
       {
         abAppend(ab, "~", 1);
-        padding--;
       }
-      while (padding--)
-        abAppend(ab, " ", 1);
-      abAppend(ab, welcome, welcome_len);
     }
     else
     {
-      abAppend(ab, "~", 1);
+      int len = E.row.size;
+      if (len > E.screen_cols)
+        len = E.screen_cols;
+      abAppend(ab, E.row.chars, len);
     }
-
     abAppend(ab, "\x1b[K", 3);
     if (y < E.screen_rows - 1)
     {

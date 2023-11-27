@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
+#include <sys/types.h>
 #include "enable_Raw_Mode.h"
 #include "disable_Raw_Mode.h"
 #include "termios_setup.h"
@@ -16,15 +17,21 @@
 #include "append_Buffer_Struct.h"
 #include "ab_Append.h"
 #include "enum_Editor_Key.h"
+#include "E_Row_TypeDef.h"
+#include "editor_Open.h"
 
 struct editorConfig E;
 
 struct appendBugger;
 
-int main()
+int main(int argc, char *argv[])
 {
   enableRawMode();
   initEditor();
+  if (argc >= 2)
+  {
+    editorOpen(argv[1]);
+  }
 
   // Prints out each bytes read into the console.
   while (1) // Program exit when q is included after every character.
