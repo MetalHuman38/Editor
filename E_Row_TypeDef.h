@@ -4,7 +4,9 @@
 typedef struct e_row
 {
   int size;
+  int rsize;
   char *chars;
+  char *render;
 } e_row;
 
 #endif

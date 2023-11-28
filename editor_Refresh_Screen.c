@@ -9,9 +9,11 @@
 #include "ab_Append.h"
 #include "ab_Append_Free.h"
 #include "editorConfig.h"
+#include "editor_Scroll.h"
 
 void editorRefreshScreen()
 {
+  editorScroll();
 
   struct appendBuffer ab = ABUF_INIT;
 
@@ -23,7 +25,7 @@ void editorRefreshScreen()
   editorDrawRows(&ab);
 
   char buf[32];
-  snprintf(buf, sizeof(buf), "\x1b[%d;%dH", E.cursor_y + 1, E.cursor_x + 1);
+  snprintf(buf, sizeof(buf), "\x1b[%d;%dH", (E.cursor_y - E.row_offset) + 1, (E.render_x + 1));
   abAppend(&ab, buf, strlen(buf));
 
   abAppend(&ab, "\x1b[?25h", 6);

@@ -2,6 +2,7 @@
 #define EDITOR_READ_KEY_H
 
 #define KILO_VERSION "0.0.1"
+#define KILO_TAB_STOP 8
 
 #define CTRL_KEY(k) ((k) & 0x1f)
 

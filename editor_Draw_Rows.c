@@ -15,7 +15,8 @@ void editorDrawRows(struct appendBuffer *ab)
   int y;
   for (y = 0; y < E.screen_rows; y++)
   {
-    if (y >= E.num_rows)
+    int file_row = y + E.row_offset;
+    if (file_row >= E.num_rows)
     {
 
       if (E.num_rows == 0 && y == E.screen_rows / 3)
@@ -41,10 +42,12 @@ void editorDrawRows(struct appendBuffer *ab)
     }
     else
     {
-      int len = E.row.size;
+      int len = E.row[file_row].rsize - E.col_offset;
+      if (len < 0)
+        len = 0;
       if (len > E.screen_cols)
         len = E.screen_cols;
-      abAppend(ab, E.row.chars, len);
+      abAppend(ab, &E.row[file_row].render[E.col_offset], len);
     }
     abAppend(ab, "\x1b[K", 3);
     if (y < E.screen_rows - 1)

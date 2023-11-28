@@ -12,6 +12,7 @@
 
 void editorMoveCursor(int key)
 {
+  e_row *row = (E.cursor_y >= E.num_rows) ? NULL : &E.row[E.cursor_y];
 
   switch (key)
   {
@@ -20,11 +21,21 @@ void editorMoveCursor(int key)
     {
       E.cursor_x--;
     }
+    else if (E.cursor_y > 0)
+    {
+      E.cursor_y--;
+      E.cursor_x = E.row[E.cursor_y].size;
+    }
     break;
   case ARROW_RIGHT:
-    if (E.cursor_x != E.screen_cols - 1)
+    if (row && E.cursor_x < row->size)
     {
       E.cursor_x++;
+    }
+    else if (row && E.cursor_x == row->size)
+    {
+      E.cursor_y++;
+      E.cursor_x = 0;
     }
     break;
   case ARROW_UP:
@@ -34,10 +45,17 @@ void editorMoveCursor(int key)
     }
     break;
   case ARROW_DOWN:
-    if (E.cursor_y != E.screen_rows - 1)
+    if (E.cursor_y < E.num_rows)
     {
       E.cursor_y++;
     }
     break;
+  }
+
+  row = (E.cursor_y > E.num_rows) ? NULL : &E.row[E.cursor_y];
+  int row_len = row ? row->size : 0;
+  if (E.cursor_x > row_len)
+  {
+    E.cursor_x = row_len;
   }
 }

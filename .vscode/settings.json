@@ -19,6 +19,10 @@
     "editor_Move_Cursor.h": "c",
     "enum_Editor_Key.h": "c",
     "editor_Open.h": "c",
-    "ctype.h": "c"
+    "ctype.h": "c",
+    "editor_Append_Row.h": "c",
+    "editor_Scroll.h": "c",
+    "editor_Update_Row.h": "c",
+    "editorRow_CursorX_To_RenderX.h": "c"
   }
 }

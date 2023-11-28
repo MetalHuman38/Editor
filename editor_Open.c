@@ -14,6 +14,7 @@
 #include "editorConfig.h"
 #include "die.h"
 #include "editor_Read_Key.h"
+#include "editor_Append_Row.h"
 
 void editorOpen(char *filename)
 {
@@ -24,17 +25,13 @@ void editorOpen(char *filename)
   size_t line_cap = 0;
   ssize_t line_len;
 
-  line_len = getline(&line, &line_cap, fp);
-  if (line_len != 1)
+  while ((line_len = getline(&line, &line_cap, fp)) != -1)
   {
     while (line_len > 0 && (line[line_len - 1] == '\n' || line[line_len - 1] == '\r'))
       line_len--;
-    E.row.size = line_len;
-    E.row.chars = malloc(line_len + 1);
-    memcpy(E.row.chars, line, line_len);
-    E.row.chars[line_len] = '\0';
-    E.num_rows = 1;
+    editorAppendRow(line, line_len);
   }
+
   free(line);
   fclose(fp);
 }
