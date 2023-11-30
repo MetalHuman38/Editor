@@ -4,6 +4,8 @@
 #include <termios.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <time.h>
+#include <stdarg.h>
 #include "enable_Raw_Mode.h"
 #include "disable_Raw_Mode.h"
 #include "termios_setup.h"
@@ -19,6 +21,8 @@
 #include "enum_Editor_Key.h"
 #include "E_Row_TypeDef.h"
 #include "editor_Open.h"
+#include "editor_Set_Status_Message.h"
+#include "editor_Draw_Message_Bar.h"
 
 struct editorConfig E;
 
@@ -32,6 +36,8 @@ int main(int argc, char *argv[])
   {
     editorOpen(argv[1]);
   }
+
+  editorSetStatusMessage("HELP: Ctrl-Q = quit");
 
   // Prints out each bytes read into the console.
   while (1) // Program exit when q is included after every character.

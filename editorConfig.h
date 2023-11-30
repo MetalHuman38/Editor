@@ -2,6 +2,7 @@
 #define EDITOR_CONFIG_H
 
 #include <termios.h>
+#include <time.h>
 #include "E_Row_TypeDef.h"
 
 struct editorConfig
@@ -14,6 +15,9 @@ struct editorConfig
   int screen_cols;
   int num_rows;
   e_row *row;
+  char *filename;
+  char status_message[80];
+  time_t statusMsg_Display_time;
   struct termios orig_termios;
 };
 

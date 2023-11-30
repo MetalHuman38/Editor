@@ -10,6 +10,8 @@
 #include "ab_Append_Free.h"
 #include "editorConfig.h"
 #include "editor_Scroll.h"
+#include "editor_Draw_StatusBar.h"
+#include "editor_Draw_Message_Bar.h"
 
 void editorRefreshScreen()
 {
@@ -23,6 +25,8 @@ void editorRefreshScreen()
                               // (cursor position ) to position the cursor.
 
   editorDrawRows(&ab);
+  editorDrawStatusBar(&ab);
+  editorDrawMessageBar(&ab);
 
   char buf[32];
   snprintf(buf, sizeof(buf), "\x1b[%d;%dH", (E.cursor_y - E.row_offset) + 1, (E.render_x + 1));

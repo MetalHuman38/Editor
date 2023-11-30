@@ -31,12 +31,23 @@ void editorProcessKeyPress()
     break;
 
   case END_KEY:
-    E.cursor_x = E.screen_cols - 1;
+    if (E.cursor_y < E.num_rows)
+      E.cursor_x = E.row[E.cursor_y].size;
     break;
 
   case PAGE_UP:
   case PAGE_DOWN:
   {
+    if (c == PAGE_UP)
+    {
+      E.cursor_y = E.row_offset;
+    }
+    else if (c == PAGE_DOWN)
+    {
+      E.cursor_y = E.row_offset + E.screen_rows - 1;
+      if (E.cursor_y > E.num_rows)
+        E.cursor_y = E.num_rows;
+    }
     int times = E.screen_rows;
     while (times--)
       editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);

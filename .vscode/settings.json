@@ -23,6 +23,9 @@
     "editor_Append_Row.h": "c",
     "editor_Scroll.h": "c",
     "editor_Update_Row.h": "c",
-    "editorRow_CursorX_To_RenderX.h": "c"
+    "editorRow_CursorX_To_RenderX.h": "c",
+    "editor_Draw_StatusBar.h": "c",
+    "editor_Set_Status_Message.h": "c",
+    "editor_Draw_Message_Bar.h": "c"
   }
 }

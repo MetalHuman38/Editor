@@ -4,6 +4,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include "editorConfig.h"
+
 // Include your custom header files.
 #include "append_Buffer_Struct.h"
 #include "ab_Append.h"
@@ -50,9 +51,7 @@ void editorDrawRows(struct appendBuffer *ab)
       abAppend(ab, &E.row[file_row].render[E.col_offset], len);
     }
     abAppend(ab, "\x1b[K", 3);
-    if (y < E.screen_rows - 1)
-    {
-      abAppend(ab, "\r\n", 2);
-    }
+
+    abAppend(ab, "\r\n", 2);
   }
 }

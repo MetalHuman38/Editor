@@ -20,7 +20,11 @@ void initEditor()
   E.col_offset = 0;
   E.num_rows = 0;
   E.row = NULL;
+  E.filename = NULL;
+  E.status_message[0] = '\0';
+  E.statusMsg_Display_time = 0;
 
   if (getWindowSize(&E.screen_rows, &E.screen_cols) == -1)
     die("getWindowSize");
+  E.screen_rows -= 2;
 }
