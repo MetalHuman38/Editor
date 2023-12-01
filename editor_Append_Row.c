@@ -26,4 +26,5 @@ void editorAppendRow(char *s, size_t len)
   editorUpdateRow(&E.row[at]);
 
   E.num_rows++;
+  E.dirty_flag++;
 }

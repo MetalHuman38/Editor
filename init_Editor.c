@@ -20,6 +20,7 @@ void initEditor()
   E.col_offset = 0;
   E.num_rows = 0;
   E.row = NULL;
+  E.dirty_flag = 0;
   E.filename = NULL;
   E.status_message[0] = '\0';
   E.statusMsg_Display_time = 0;

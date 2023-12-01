@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <stdarg.h>
+#include <fcntl.h>
 #include "enable_Raw_Mode.h"
 #include "disable_Raw_Mode.h"
 #include "termios_setup.h"
@@ -37,7 +38,7 @@ int main(int argc, char *argv[])
     editorOpen(argv[1]);
   }
 
-  editorSetStatusMessage("HELP: Ctrl-Q = quit");
+  editorSetStatusMessage("HELP: Ctrl-S = save | Ctrl-Q = quit");
 
   // Prints out each bytes read into the console.
   while (1) // Program exit when q is included after every character.

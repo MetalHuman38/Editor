@@ -15,7 +15,8 @@ void editorDrawStatusBar(struct appendBuffer *ab)
 {
   abAppend(ab, "\x1b[7m", 4);
   char status[80], right_status[80];
-  int len = snprintf(status, sizeof(status), "%.20s - %d lines", E.filename ? E.filename : "[No Name]", E.num_rows);
+  int len = snprintf(status, sizeof(status), "%.20s - %d lines %s", E.filename ? E.filename : "[No Name]", E.num_rows,
+                     E.dirty_flag ? "(modified)" : "");
   int right_len = snprintf(right_status, sizeof(right_status), "%d/%d", E.cursor_y + 1, E.num_rows);
   if (len > E.screen_cols)
     len = E.screen_cols;

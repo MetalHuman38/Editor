@@ -26,6 +26,18 @@
     "editorRow_CursorX_To_RenderX.h": "c",
     "editor_Draw_StatusBar.h": "c",
     "editor_Set_Status_Message.h": "c",
-    "editor_Draw_Message_Bar.h": "c"
+    "editor_Draw_Message_Bar.h": "c",
+    "editor_Row_Insert_Char.h": "c",
+    "editor_Insert_Char.h": "c",
+    "editor_Row_To_String.h": "c",
+    "editor_Save.h": "c",
+    "stdlib.h": "c",
+    "time.h": "c",
+    "editor_Row_Delete_Char.h": "c",
+    "editor_Delete_Char.h": "c",
+    "ioctl.h": "c",
+    "editor_Free_Row.h": "c",
+    "editor_Delete_Row.h": "c",
+    "editor_Row_Append_String.h": "c"
   }
 }
