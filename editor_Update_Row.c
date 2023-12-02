@@ -10,6 +10,7 @@
 #include "E_Row_TypeDef.h"
 #include "editorConfig.h"
 #include "editor_Read_Key.h"
+#include "editor_Update_Syntax.h"
 
 void editorUpdateRow(e_row *row)
 {
@@ -38,4 +39,6 @@ void editorUpdateRow(e_row *row)
   }
   row->render[idx] = '\0';
   row->rsize = idx;
+
+  editorUpdateSyntax(row);
 }

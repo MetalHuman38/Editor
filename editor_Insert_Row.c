@@ -6,16 +6,18 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/ioctl.h>
-#include "editor_Append_Row.h"
+#include "editor_Insert_Row.h"
 #include "editorConfig.h"
 #include "editor_Draw_Rows.h"
 #include "editor_Update_Row.h"
 
-void editorAppendRow(char *s, size_t len)
+void editorInsertRow(int at, char *s, size_t len)
 {
+  if (at < 0 || at > E.num_rows)
+    return;
   E.row = realloc(E.row, sizeof(e_row) * (E.num_rows + 1));
+  memmove(&E.row[at + 1], &E.row[at], sizeof(e_row) * (E.num_rows - at));
 
-  int at = E.num_rows;
   E.row[at].size = len;
   E.row[at].chars = malloc(len + 1);
   memcpy(E.row[at].chars, s, len);
@@ -23,6 +25,7 @@ void editorAppendRow(char *s, size_t len)
 
   E.row[at].rsize = 0;
   E.row[at].render = NULL;
+  E.row[at].highlighting = NULL;
   editorUpdateRow(&E.row[at]);
 
   E.num_rows++;

@@ -15,4 +15,11 @@ enum editorKey
   PAGE_DOWN
 };
 
+enum editorHighlight
+{
+  HIGHLIGHT_NORMAL = 0,
+  HIGHLIGHT_NUMBER,
+  HIGHLIGHT_MATCH
+};
+
 #endif

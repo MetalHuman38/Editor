@@ -10,6 +10,7 @@
 #include "append_Buffer_Struct.h"
 #include "ab_Append.h"
 #include "editorConfig.h"
+#include "editor_FileType.h"
 
 void editorDrawStatusBar(struct appendBuffer *ab)
 {
@@ -17,7 +18,9 @@ void editorDrawStatusBar(struct appendBuffer *ab)
   char status[80], right_status[80];
   int len = snprintf(status, sizeof(status), "%.20s - %d lines %s", E.filename ? E.filename : "[No Name]", E.num_rows,
                      E.dirty_flag ? "(modified)" : "");
-  int right_len = snprintf(right_status, sizeof(right_status), "%d/%d", E.cursor_y + 1, E.num_rows);
+
+  int right_len = snprintf(right_status, sizeof(right_status), "%s | %d/%d", E.syntax ? E.syntax->filetype : "no ft", E.cursor_y + 1, E.num_rows);
+
   if (len > E.screen_cols)
     len = E.screen_cols;
   abAppend(ab, status, len);

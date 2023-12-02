@@ -3,6 +3,6 @@
 
 #include "editorConfig.h"
 //
-int editorRowCxToRx(e_row *row, int cursor_x);
+int editorRowCxToRx(e_row *row, int cx);
 
 #endif

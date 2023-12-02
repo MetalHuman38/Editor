@@ -10,14 +10,14 @@
 #include "append_Buffer_Struct.h"
 #include "ab_Append.h"
 #include "editorConfig.h"
-#include "editor_Append_Row.h"
+#include "editor_Insert_Row.h"
 #include "editor_Row_Insert_Char.h"
 
 void editorInsertChar(int c)
 {
   if (E.cursor_y == E.num_rows)
   {
-    editorAppendRow("", 0);
+    editorInsertRow(E.num_rows, "", 0);
   }
   editorRowInsertChar(&E.row[E.cursor_y], E.cursor_x, c);
   E.cursor_x++;

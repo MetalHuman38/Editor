@@ -24,6 +24,7 @@ void initEditor()
   E.filename = NULL;
   E.status_message[0] = '\0';
   E.statusMsg_Display_time = 0;
+  E.syntax = NULL;
 
   if (getWindowSize(&E.screen_rows, &E.screen_cols) == -1)
     die("getWindowSize");

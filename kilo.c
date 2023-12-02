@@ -24,6 +24,7 @@
 #include "editor_Open.h"
 #include "editor_Set_Status_Message.h"
 #include "editor_Draw_Message_Bar.h"
+#include "editor_Prompt.h"
 
 struct editorConfig E;
 
@@ -38,7 +39,7 @@ int main(int argc, char *argv[])
     editorOpen(argv[1]);
   }
 
-  editorSetStatusMessage("HELP: Ctrl-S = save | Ctrl-Q = quit");
+  editorSetStatusMessage("HELP: Ctrl-S = save | Ctrl-Q = quit | Ctrl-F = find");
 
   // Prints out each bytes read into the console.
   while (1) // Program exit when q is included after every character.

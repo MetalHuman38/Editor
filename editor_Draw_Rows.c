@@ -4,11 +4,12 @@
 #include <termios.h>
 #include <unistd.h>
 #include "editorConfig.h"
-
-// Include your custom header files.
+#include "E_Row_TypeDef.h"
 #include "append_Buffer_Struct.h"
 #include "ab_Append.h"
 #include "editor_Read_Key.h"
+#include "enum_Editor_Key.h"
+#include "editor_Syntax_To_Color.h"
 
 void editorDrawRows(struct appendBuffer *ab)
 {
@@ -48,7 +49,35 @@ void editorDrawRows(struct appendBuffer *ab)
         len = 0;
       if (len > E.screen_cols)
         len = E.screen_cols;
-      abAppend(ab, &E.row[file_row].render[E.col_offset], len);
+      char *c = &E.row[file_row].render[E.col_offset];
+      unsigned char *highlight = &E.row[file_row].highlighting[E.col_offset];
+      int current_color = -1;
+      int j;
+      for (j = 0; j < len; j++)
+      {
+        if (highlight[j] == HIGHLIGHT_NORMAL)
+        {
+          if (current_color != -1)
+          {
+            abAppend(ab, "\x1b[39m", 5);
+            current_color = -1;
+          }
+          abAppend(ab, &c[j], 1);
+        }
+        else
+        {
+          int color = editorSyntaxToColor(highlight[j]);
+          if (color != current_color)
+          {
+            char buffer[16];
+            int clen = snprintf(buffer, sizeof(buffer), "\x1b[%dm", color);
+            abAppend(ab, buffer, clen);
+          }
+
+          abAppend(ab, &c[j], 1);
+        }
+      }
+      abAppend(ab, "\x1b[39m", 5);
     }
     abAppend(ab, "\x1b[K", 3);
 

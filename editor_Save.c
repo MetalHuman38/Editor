@@ -16,11 +16,19 @@
 #include "editor_Row_To_String.h"
 #include "editor_Save.h"
 #include "editor_Set_Status_Message.h"
+#include "editor_Prompt.h"
 
 void editorSave()
 {
   if (E.filename == NULL)
-    return;
+  {
+    E.filename = editorPrompt("Save as: %s (ESC to cancel)", NULL);
+    if (E.filename == NULL)
+    {
+      editorSetStatusMessage("Save aborted");
+      return;
+    }
+  }
 
   int len;
   char *buf = editorRowToString(&len);

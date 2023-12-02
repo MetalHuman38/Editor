@@ -4,6 +4,8 @@
 #include <termios.h>
 #include <time.h>
 #include "E_Row_TypeDef.h"
+#include "editor_Read_Key.h"
+#include "editor_FileType.h"
 
 struct editorConfig
 {
@@ -19,6 +21,7 @@ struct editorConfig
   char *filename;
   char status_message[80];
   time_t statusMsg_Display_time;
+  struct editorSyntax *syntax;
   struct termios orig_termios;
 };
 

@@ -7,6 +7,7 @@ typedef struct e_row
   int rsize;
   char *chars;
   char *render;
+  unsigned char *highlighting;
 } e_row;
 
 #endif

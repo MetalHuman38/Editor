@@ -14,7 +14,7 @@
 #include "editorConfig.h"
 #include "die.h"
 #include "editor_Read_Key.h"
-#include "editor_Append_Row.h"
+#include "editor_Insert_Row.h"
 
 void editorOpen(char *filename)
 {
@@ -31,7 +31,7 @@ void editorOpen(char *filename)
   {
     while (line_len > 0 && (line[line_len - 1] == '\n' || line[line_len - 1] == '\r'))
       line_len--;
-    editorAppendRow(line, line_len);
+    editorInsertRow(E.num_rows, line, line_len);
   }
 
   free(line);

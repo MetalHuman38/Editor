@@ -38,6 +38,18 @@
     "ioctl.h": "c",
     "editor_Free_Row.h": "c",
     "editor_Delete_Row.h": "c",
-    "editor_Row_Append_String.h": "c"
+    "editor_Row_Append_String.h": "c",
+    "editor_Insert_New_Line.h": "c",
+    "editor_Prompt.h": "c",
+    "editor_Find.h": "c",
+    "editorRow_RenderX_To_CursorX.h": "c",
+    "editor_find_call_back.h": "c",
+    "editor_Update_Syntax.h": "c",
+    "editor_Syntax_To_Color.h": "c",
+    "is_Separator.h": "c",
+    "errno.h": "c",
+    "termios.h": "c",
+    "editor_Select_Syntax_Highlight.h": "c",
+    "editor_filetype.h": "c"
   }
 }

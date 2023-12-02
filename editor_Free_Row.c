@@ -16,4 +16,5 @@ void editorFreeRow(e_row *row)
 {
   free(row->render);
   free(row->chars);
+  free(row->highlighting);
 }

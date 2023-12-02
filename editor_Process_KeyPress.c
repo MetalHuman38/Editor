@@ -12,6 +12,8 @@
 #include "editor_Save.h"
 #include "editor_Set_Status_Message.h"
 #include "editor_Delete_Char.h"
+#include "editor_Insert_New_Line.h"
+#include "editor_Find.h"
 
 void editorProcessKeyPress()
 {
@@ -22,7 +24,7 @@ void editorProcessKeyPress()
   switch (c)
   {
   case '\r':
-    /*To DO*/
+    editorInsertNewLine();
     break;
 
   case CTRL_KEY('q'):
@@ -44,6 +46,19 @@ void editorProcessKeyPress()
 
   case CTRL_KEY('s'):
     editorSave();
+    break;
+
+  case HOME_KEY:
+    E.cursor_x = 0;
+    break;
+
+  case END_KEY:
+    if (E.cursor_y < E.num_rows)
+      E.cursor_x = E.row[E.cursor_y].size;
+    break;
+
+  case CTRL_KEY('f'):
+    editorFind();
     break;
 
   case BACKSPACE:
