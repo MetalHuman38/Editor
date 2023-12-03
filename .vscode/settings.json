@@ -50,6 +50,7 @@
     "errno.h": "c",
     "termios.h": "c",
     "editor_Select_Syntax_Highlight.h": "c",
-    "editor_filetype.h": "c"
+    "editor_filetype.h": "c",
+    "editor_syntax.h": "c"
   }
 }

@@ -6,11 +6,9 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/ioctl.h>
-#include "editor_Update_Row.h"
-#include "E_Row_TypeDef.h"
-#include "editorConfig.h"
 #include "editor_Read_Key.h"
 #include "editor_Update_Syntax.h"
+#include "E_Row_TypeDef.h"
 
 void editorUpdateRow(e_row *row)
 {

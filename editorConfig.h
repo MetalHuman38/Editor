@@ -4,8 +4,8 @@
 #include <termios.h>
 #include <time.h>
 #include "E_Row_TypeDef.h"
-#include "editor_Read_Key.h"
-#include "editor_FileType.h"
+
+struct editorSyntax;
 
 struct editorConfig
 {

@@ -15,11 +15,15 @@
 #include "die.h"
 #include "editor_Read_Key.h"
 #include "editor_Insert_Row.h"
+#include "editor_Select_Syntax_Highlight.h"
 
 void editorOpen(char *filename)
 {
   free(E.filename);
   E.filename = strdup(filename);
+
+  editorSelectSyntaxHighlight();
+
   FILE *fp = fopen(filename, "r");
   if (!fp)
     die("fopen");

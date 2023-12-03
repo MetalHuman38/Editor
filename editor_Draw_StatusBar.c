@@ -1,3 +1,4 @@
+#include "editor_Syntax.h"
 #include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -10,7 +11,6 @@
 #include "append_Buffer_Struct.h"
 #include "ab_Append.h"
 #include "editorConfig.h"
-#include "editor_FileType.h"
 
 void editorDrawStatusBar(struct appendBuffer *ab)
 {

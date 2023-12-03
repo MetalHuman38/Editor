@@ -3,13 +3,12 @@
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
-#include "editorConfig.h"
-#include "E_Row_TypeDef.h"
-#include "append_Buffer_Struct.h"
-#include "ab_Append.h"
 #include "editor_Read_Key.h"
 #include "enum_Editor_Key.h"
 #include "editor_Syntax_To_Color.h"
+#include "ab_Append.h"
+#include "append_Buffer_Struct.h"
+#include "editorConfig.h"
 
 void editorDrawRows(struct appendBuffer *ab)
 {
@@ -55,7 +54,20 @@ void editorDrawRows(struct appendBuffer *ab)
       int j;
       for (j = 0; j < len; j++)
       {
-        if (highlight[j] == HIGHLIGHT_NORMAL)
+        if (iscntrl(c[j]))
+        {
+          char sym = (c[j] <= 26) ? '@' + c[j] : '?';
+          abAppend(ab, "\x1b[7m", 4);
+          abAppend(ab, &sym, 1);
+          abAppend(ab, "\x1b[m", 3);
+          if (current_color != -1)
+          {
+            char buffer[16];
+            int clen = snprintf(buffer, sizeof(buffer), "\x1b[%dm", current_color);
+            abAppend(ab, buffer, clen);
+          }
+        }
+        else if (highlight[j] == HIGHLIGHT_NORMAL)
         {
           if (current_color != -1)
           {

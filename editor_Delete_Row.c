@@ -7,10 +7,7 @@
 #include <string.h>
 #include <time.h>
 #include <sys/ioctl.h>
-#include "append_Buffer_Struct.h"
 #include "editorConfig.h"
-#include "E_Row_TypeDef.h"
-#include "editor_Row_Delete_Char.h"
 #include "editor_Free_Row.h"
 
 void editorDeleteRow(int at)
@@ -19,6 +16,8 @@ void editorDeleteRow(int at)
     return;
   editorFreeRow(&E.row[at]);
   memmove(&E.row[at], &E.row[at + 1], sizeof(e_row) * (E.num_rows - at - 1));
+  for (int j = at; j < E.num_rows - 1; j++)
+    E.row[j].idx--;
   E.num_rows--;
   E.dirty_flag++;
 }

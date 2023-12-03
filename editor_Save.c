@@ -17,6 +17,7 @@
 #include "editor_Save.h"
 #include "editor_Set_Status_Message.h"
 #include "editor_Prompt.h"
+#include "editor_Select_Syntax_Highlight.h"
 
 void editorSave()
 {
@@ -28,6 +29,7 @@ void editorSave()
       editorSetStatusMessage("Save aborted");
       return;
     }
+    editorSelectSyntaxHighlight();
   }
 
   int len;
